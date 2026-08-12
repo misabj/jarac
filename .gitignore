@@ -1,0 +1,17 @@
+node_modules
+.next
+.next-prod
+_deploy
+out
+dist
+build
+.env
+.env.local
+.DS_Store
+*.log
+*.zip
+*.tsbuildinfo
+npm-debug.log*
+.vercel
+.turbo
+public/uploads
