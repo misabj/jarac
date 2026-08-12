@@ -12,7 +12,7 @@ import { Standings } from '@/components/Standings';
 import { HistoricalReportTable } from '@/components/HistoricalReportTable';
 import { SeasonFilterSelect } from '@/components/SeasonFilterSelect';
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export default async function StandingsPage({ searchParams }: { searchParams: Promise<{ season?: string }> }) {
   const sp = await searchParams;

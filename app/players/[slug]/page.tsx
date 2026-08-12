@@ -16,7 +16,7 @@ import { PlayerFormChart } from '@/components/PlayerFormChart';
 import { fmtDate, fmtNum } from '@/lib/format';
 import { hasAnyPlayerSkill, PLAYER_SKILL_FIELDS, PLAYER_SKILL_LABELS } from '@/lib/playerSkills';
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export default async function PlayerPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

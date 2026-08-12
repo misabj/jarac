@@ -22,7 +22,7 @@ import { MatchScorerLists } from '@/components/MatchScorerLists';
 import { fmtDate, fmtNum } from '@/lib/format';
 import { seasonCompetitionSuffix } from '@/lib/seasonLabels';
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export default async function HomePage() {
   const [activeSeason, allAwards] = await Promise.all([

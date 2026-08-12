@@ -15,6 +15,10 @@ export function PlayerAvatar({ name, photoUrl, size = 48, className = '' }: Prop
       <img
         src={photoUrl}
         alt={name}
+        width={size}
+        height={size}
+        loading="lazy"
+        decoding="async"
         style={{ width: dim, height: dim }}
         className={`rounded-full object-cover border border-white/10 ring-1 ring-black/30 shadow-md ${className}`}
       />

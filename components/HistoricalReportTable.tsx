@@ -85,15 +85,25 @@ export function HistoricalReportTable({ rows, awardsByPlayer }: Props) {
   const [sortKey, setSortKey] = useState<SortKey>('points');
   const [desc, setDesc] = useState(true);
   const [showAll, setShowAll] = useState(false);
+  const [q, setQ] = useState('');
+
+  const query = q.trim().toLowerCase();
 
   const sorted = useMemo(() => {
-    return [...rows].sort((a, b) => {
+    const filtered = query
+      ? rows.filter(
+          (r) =>
+            r.display_name.toLowerCase().includes(query) ||
+            (r.nickname ?? '').toLowerCase().includes(query)
+        )
+      : rows;
+    return [...filtered].sort((a, b) => {
       const av = Number(a[sortKey] ?? 0);
       const bv = Number(b[sortKey] ?? 0);
       if (av === bv) return a.display_name.localeCompare(b.display_name);
       return desc ? bv - av : av - bv;
     });
-  }, [rows, sortKey, desc]);
+  }, [rows, sortKey, desc, query]);
 
   const visibleCols = showAll ? COLS : COLS.filter((c) => DEFAULT_VISIBLE.includes(c.key));
 
@@ -116,16 +126,41 @@ export function HistoricalReportTable({ rows, awardsByPlayer }: Props) {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between gap-2">
-        <div className="text-xs text-muted">
-          {rows.length} {rows.length === 1 ? 'igrač' : 'igrača'} • klikni na zaglavlje za sortiranje
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="relative flex-1 sm:max-w-xs">
+          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted text-sm">
+            🔍
+          </span>
+          <input
+            type="text"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Pretraži igrača…"
+            aria-label="Pretraži igrača"
+            className="input w-full pl-9"
+          />
+          {q && (
+            <button
+              type="button"
+              aria-label="Obriši pretragu"
+              onClick={() => setQ('')}
+              className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex h-6 w-6 items-center justify-center rounded-md text-muted hover:text-text hover:bg-card-hover transition"
+            >
+              ×
+            </button>
+          )}
         </div>
-        <button
-          onClick={() => setShowAll((s) => !s)}
-          className="btn-ghost px-3 py-1.5 text-xs"
-        >
-          {showAll ? 'Manje kolona' : 'Sve kolone'}
-        </button>
+        <div className="flex items-center justify-between gap-2 sm:justify-end">
+          <div className="text-xs text-muted">
+            {sorted.length} {sorted.length === 1 ? 'igrač' : 'igrača'} • klikni na zaglavlje za sortiranje
+          </div>
+          <button
+            onClick={() => setShowAll((s) => !s)}
+            className="btn-ghost px-3 py-1.5 text-xs whitespace-nowrap"
+          >
+            {showAll ? 'Manje kolona' : 'Sve kolone'}
+          </button>
+        </div>
       </div>
 
       <div className="card overflow-hidden">
@@ -192,6 +227,13 @@ export function HistoricalReportTable({ rows, awardsByPlayer }: Props) {
                   })}
                 </tr>
               ))}
+              {sorted.length === 0 && (
+                <tr>
+                  <td colSpan={visibleCols.length + 2} className="text-center text-muted py-6">
+                    Nema igrača za zadatu pretragu
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

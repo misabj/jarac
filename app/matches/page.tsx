@@ -2,7 +2,7 @@ import { getActiveSeason, getMatches, getSeasonsWithMatches } from '@/lib/querie
 import { MatchCard } from '@/components/MatchCard';
 import { SeasonFilterSelect } from '@/components/SeasonFilterSelect';
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export default async function MatchesPage({ searchParams }: { searchParams: Promise<{ season?: string }> }) {
   const sp = await searchParams;

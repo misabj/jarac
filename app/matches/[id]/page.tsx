@@ -8,7 +8,7 @@ import { MatchScorerLists } from '@/components/MatchScorerLists';
 import { fmtDateTime, fmtNum } from '@/lib/format';
 import type { MatchPlayerWithPlayer } from '@/lib/types';
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 function isMatchFinished(playedAt: string) {
   return new Date(playedAt.replace(' ', 'T')).getTime() + 60 * 60 * 1000 <= Date.now();
