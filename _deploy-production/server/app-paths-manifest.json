@@ -1,0 +1,21 @@
+{
+  "/api/beer/route": "app/api/beer/route.js",
+  "/images/gallery/[file]/route": "app/images/gallery/[file]/route.js",
+  "/images/players/[file]/route": "app/images/players/[file]/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/gallery/page": "app/admin/gallery/page.js",
+  "/admin/players/[id]/page": "app/admin/players/[id]/page.js",
+  "/admin/beer/page": "app/admin/beer/page.js",
+  "/admin/matches/[id]/page": "app/admin/matches/[id]/page.js",
+  "/gallery/page": "app/gallery/page.js",
+  "/admin/matches/new/page": "app/admin/matches/new/page.js",
+  "/admin/matches/page": "app/admin/matches/page.js",
+  "/admin/players/page": "app/admin/players/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/players/page": "app/players/page.js",
+  "/matches/page": "app/matches/page.js",
+  "/standings/page": "app/standings/page.js",
+  "/players/[slug]/page": "app/players/[slug]/page.js",
+  "/page": "app/page.js",
+  "/matches/[id]/page": "app/matches/[id]/page.js"
+}

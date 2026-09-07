@@ -1,0 +1,47 @@
+{
+  "name": "jarac",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:schema": "node --import tsx/esm scripts/applySchema.ts",
+    "db:seed": "node --import tsx/esm scripts/seed.ts",
+    "import:players": "node --import tsx/esm scripts/importPlayersFromCsv.ts",
+    "import:stats": "node --import tsx/esm scripts/importHistoricalStatsFromCsv.ts",
+    "import:stats:xlsx": "node --import tsx/esm scripts/importStatsFromXlsx.ts",
+    "import:player-skills": "node --import tsx/esm scripts/importPlayerSkillsFromText.ts",
+    "import:matches:docx": "node --import tsx/esm scripts/importMatchesFromDocx.ts",
+    "dump:docx": "node --import tsx/esm scripts/dumpDocx.ts",
+    "assign:photos": "node --import tsx/esm scripts/assignPlayerPhotos.ts",
+    "migrate:player-skills": "node --import tsx/esm scripts/migratePlayerSkills.ts",
+    "migrate:prev-season": "node --import tsx/esm scripts/migratePreviousSeason.ts",
+    "migrate:lineups": "node --import tsx/esm scripts/migrateLineupPositions.ts",
+    "fix:prev-season": "node --import tsx/esm scripts/fixPreviousSeasonStats.ts"
+  },
+  "dependencies": {
+    "mysql2": "^3.11.4",
+    "next": "15.0.3",
+    "qrcode": "^1.5.4",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "csv-parse": "^5.5.6",
+    "dotenv": "^16.4.5",
+    "mammoth": "^1.12.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "xlsx": "^0.18.5"
+  }
+}
